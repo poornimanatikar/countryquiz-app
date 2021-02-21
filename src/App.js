@@ -5,6 +5,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import {useState,useEffect} from 'react';
+import ResultImg from './Assets/winners.svg';
 function App() {
   const [countries,setCountries]= useState([]);
   const [question,setQuestion]= useState("");
@@ -122,9 +123,11 @@ function App() {
             </List>
             {next && <Button onClick={()=> loadNextQuestion()}>Next</Button>}
       </div>}
-      {showResult && <div>
+      {showResult && <div className={styles.result}>
+      <img src={ResultImg}></img>
+      <h1>Results</h1>
       <p>You got {count} correct answers</p>
-      <Button onClick={()=>tryAgain()}>Try Again</Button>
+      <Button variant="outlined" onClick={()=>tryAgain()}>Try Again</Button>
       </div>}
       </div>
   </div>
