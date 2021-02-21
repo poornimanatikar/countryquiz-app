@@ -9,20 +9,26 @@
     margin: 0;
     width: auto;
     height: 100vh;
-    position: relative;
-    h2 {
-        position: absolute;
-        top: 5%;
-        left: 35%;
-        color: white;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
     .quiz {
-        width: 400px;
-        height: 450px;
-        background-color: white;
-        position: absolute;
-        top: 10%;
-        left: 35%;
-        border-radius: 10px;
+        width: 30%;
+        height: 70%;
+        position: relative;
+
+        h2 {
+            color: white;
+        }
+        .quizarea {
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            border-radius: 10px;
+        }
+        @media only screen and (max-width: 768px) {
+            width: 80%;
+            height: 80%;
+        }
     }
 }
