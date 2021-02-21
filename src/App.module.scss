@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+* {
+    font-family: "Raleway", sans-serif;
+    line-height: 30px;
+}
+.main {
+    background-image: url("./Assets/background.png");
+    margin: 0;
+    width: auto;
+    height: 100vh;
+    position: relative;
+    h2 {
+        position: absolute;
+        top: 5%;
+        left: 35%;
+        color: white;
+    }
+    .quiz {
+        width: 400px;
+        height: 450px;
+        background-color: white;
+        position: absolute;
+        top: 10%;
+        left: 35%;
+        border-radius: 10px;
+    }
+}
