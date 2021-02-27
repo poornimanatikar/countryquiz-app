@@ -4,7 +4,9 @@ import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
 import {useState,useEffect} from 'react';
+import { withStyles } from "@material-ui/core/styles";
 import ResultImg from './Assets/winners.svg';
 function App() {
   const [countries,setCountries]= useState([]);
@@ -99,29 +101,59 @@ function App() {
     setCount(0);
     setShowResult(false);
   }
+  const CssListItem = withStyles({
+    root: {
+      border:'1px solid blue',
+      margin:'2%',
+      borderRadius:'10px',
+      width:'80%',
+    }
+  })(ListItem);
+
+  const NextButton = withStyles({
+    root: {
+      background:'orange',
+      color:'white',
+    }
+  })(Button);
+
+  const getOrder = (index) => {
+   if(index===0) {
+     return 'A'
+   } else if(index === 1) {
+     return 'B'
+   } else if(index === 2) {
+     return 'C'
+   } else {
+     return 'D'
+   }
+  }
   return (
   <div className={styles.main}>    
       <div className={styles.quiz}>
       <h2>COUNTRY QUIZ</h2>
       {!showResult  && <div className={styles.quizarea}>
-           { mode ==='capital' ?  <p> {getQuestionText()} </p> : null }
+           { mode ==='capital' ?  <h4> {getQuestionText()} </h4> : null }
            { mode ==='flag' ? 
            <div>
            <img alt="flag" src={getQuestionImg()}></img>
-           <p>Which country does this flag belong to </p> 
+           <h4>Which country does this flag belong to ?</h4> 
            </div> : null}
            <List className={styles.list}>
             
             {options.map((value, key) => {
                 return (
-                    <ListItem key={key} button onClick={() => handleAnswer(value)}>
+                    <CssListItem key={key} button onClick={() => handleAnswer(value)}>
+                        <ListItemIcon>
+                          {getOrder(key)}
+                        </ListItemIcon>
                         <ListItemText  primary={value} />
-                    </ListItem>
+                    </CssListItem>
 
                 )
             })}
             </List>
-            {next && <Button onClick={()=> loadNextQuestion()}>Next</Button>}
+            {next && <NextButton onClick={()=> loadNextQuestion()}>Next</NextButton>}
       </div>}
       {showResult && <div className={styles.result}>
       <img src={ResultImg}></img>
