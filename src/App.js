@@ -160,7 +160,7 @@ function App() {
   }
   return (
   <div className={styles.main}>
-      <p>created by poornima - devchallenges.io</p>
+      <p className={styles.footer}>created by poornima - devchallenges.io</p>
       <div className={styles.quiz}>
       <h2>COUNTRY QUIZ</h2>
       {!showResult  && <div className={styles.quizarea}>
@@ -188,7 +188,7 @@ function App() {
             {next && <NextButton onClick={()=> loadNextQuestion()}>Next</NextButton>}
       </div>}
       {showResult && <div className={styles.result}>
-      <img src={ResultImg}></img>
+      <img alt="result" src={ResultImg}></img>
       <h1>Results</h1>
       <p>You got {count} correct answers</p>
       <Button variant="outlined" onClick={()=>tryAgain()}>Try Again</Button>
