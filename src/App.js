@@ -17,8 +17,10 @@ function App() {
   const [count,setCount] = useState(0);
   const [next,setNext] = useState(false);
   const [showResult,setShowResult] =  useState(false);
+  const [selectedValue,setSelectedValue] = useState('');
 
   const loadNextQuestion = () => {
+    setSelectedValue('');
     let countrySelection=[];
     let options=[];
     for(let i=0;i<4;i++){
@@ -31,7 +33,7 @@ function App() {
       setQuestion(countrySelection[0].name);  
       setAnswer(countrySelection[0].capital);
       for(let i=0;i<4;i++){
-        options.push(countrySelection[i].name);
+        options.push(countrySelection[i].capital);
       }
   } else {
        setQuestion(countrySelection[0].flag);
@@ -89,16 +91,20 @@ function App() {
      return `${question}`;
   }
   const handleAnswer = (value) => {
+    setSelectedValue(value);
      if(answer === value) {
       setCount(prevCount => prevCount + 1);
       setNext(true);
      } else {
        setNext(false);
-       setShowResult(true);
+       setTimeout(() => {setShowResult(true)},3000);     
      }
   }
+
+  
   const tryAgain = () => {
     setCount(0);
+    setSelectedValue('');
     setShowResult(false);
   }
   const CssListItem = withStyles({
@@ -128,6 +134,26 @@ function App() {
      return 'D'
    }
   }
+
+  const getCorrectClass = (value) => {
+    if(selectedValue==='') {
+      return '';
+    } else {
+      if(value === answer) {
+        return styles.correctClass;
+      }
+    }
+  }
+
+  const getWrongClass = (value) => {
+    if(selectedValue === '') {
+      return '';
+    } else {
+      if(selectedValue === value && value !==answer ) {
+      return styles.wrongClass;
+      }
+    }
+  }
   return (
   <div className={styles.main}>    
       <div className={styles.quiz}>
@@ -143,7 +169,7 @@ function App() {
             
             {options.map((value, key) => {
                 return (
-                    <CssListItem key={key} button onClick={() => handleAnswer(value)}>
+                    <CssListItem key={key} className={`${getCorrectClass(value)} ${getWrongClass(value)}`} button onClick={() => handleAnswer(value)}>
                         <ListItemIcon>
                           {getOrder(key)}
                         </ListItemIcon>
