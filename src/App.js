@@ -8,6 +8,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import {useState,useEffect} from 'react';
 import { withStyles } from "@material-ui/core/styles";
 import ResultImg from './Assets/winners.svg';
+import AdventureImg from './Assets/adventure.svg';
 function App() {
   const [countries,setCountries]= useState([]);
   const [question,setQuestion]= useState("");
@@ -120,6 +121,9 @@ function App() {
     root: {
       background:'orange',
       color:'white',
+      width:'30%',
+      position:'relative',
+      right:'-70%',
     }
   })(Button);
 
@@ -155,14 +159,16 @@ function App() {
     }
   }
   return (
-  <div className={styles.main}>    
+  <div className={styles.main}>
+      <p>created by poornima - devchallenges.io</p>
       <div className={styles.quiz}>
       <h2>COUNTRY QUIZ</h2>
       {!showResult  && <div className={styles.quizarea}>
+           <img className={styles.adventure} alt="adventure" src={AdventureImg}></img>
            { mode ==='capital' ?  <h4> {getQuestionText()} </h4> : null }
            { mode ==='flag' ? 
            <div>
-           <img alt="flag" src={getQuestionImg()}></img>
+           <img className={styles.flag} alt="flag" src={getQuestionImg()}></img>
            <h4>Which country does this flag belong to ?</h4> 
            </div> : null}
            <List className={styles.list}>
