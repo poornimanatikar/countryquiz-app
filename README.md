@@ -1,6 +1,6 @@
 <!-- Please update value in the {}  -->
 
-<h1 align="center">Weather App</h1>
+<h1 align="center">Country Quiz App</h1>
 
 <div align="center">
    Solution for a challenge from  <a href="http://devchallenges.io" target="_blank">Devchallenges.io</a>.
@@ -37,7 +37,7 @@
 
 ## Overview
 
-![screenshot](https://user-images.githubusercontent.com/17087030/105580248-41d4ed00-5db1-11eb-89c3-ebeda8f7856a.PNG)
+![screenshot](https://user-images.githubusercontent.com/17087030/109411513-a09d1000-79c8-11eb-8086-28601bfceb4e.PNG)
 
 
 ### Built With
